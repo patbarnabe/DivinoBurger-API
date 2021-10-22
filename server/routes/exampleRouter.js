@@ -1,10 +1,12 @@
-const { Router } = require('express')
-const { getExample, getOtherExample } = require('../controller/ExampleController')
+/* eslint-disable import/no-unresolved */
 
-const router = Router()
+const { Router } = require('express');
+const { getExample, getOtherExample } = require('../controller/ExampleController');
+
+const router = Router();
 
 // aqui vai as requisições
-router.get("/", getExample)
-router.get("/other", getOtherExample)
+router.get('/', getExample);
+router.get('/other', getOtherExample);
 
-module.exports = router
+module.exports = router;
