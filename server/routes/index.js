@@ -1,11 +1,13 @@
-/* eslint-disable import/no-unresolved */
-
 const { Router } = require('express');
-const ExampleRouter = require('./ExampleRouter');
+const ExampleRouter = require('./exampleRouter');
 
 const router = Router();
 
-// aqui vai todas as rotas
+// aqui vão todas as rotas
+router.use('/users', ExampleRouter);
+router.use('/products', ExampleRouter);
+router.use('/orders', ExampleRouter);
+
 router.use('/example', ExampleRouter);
 
 module.exports = router;
