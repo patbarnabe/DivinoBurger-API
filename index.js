@@ -16,7 +16,9 @@ app.use(morgan('dev'));
 app.use('/', routes);
 
 app.get('/', (req, res) => {
-  res.send('Divino Burger API');
+  res.send({
+    rest_api: 'Divino Burger API',
+  });
 });
 
 app.use((req, res, next) => {
