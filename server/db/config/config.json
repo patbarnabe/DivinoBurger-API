@@ -1,16 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
+    "username": "postgres",
+    "password": "admin12345",
+    "database": "burger_queen_api",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    }
+    "dialect": "postgres"   
   },
   "test": {
     "username": "root",
