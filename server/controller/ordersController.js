@@ -1,28 +1,22 @@
-/* eslint-disable no-console */
-
-const getAllOrders = (req, res) => {
-  console.log('function getAllOrders');
-  res.send('function getAllOrders');
+/* eslint-disable no-unused-vars */
+const getAllOrders = (req, res, next) => {
+  res.status(200).send('function getAllOrders');
 };
 
-const getOrderById = (req, res) => {
-  console.log('function getOrderById');
-  res.send('function getOrderById');
+const getOrderById = (req, res, next) => {
+  res.status(200).send('function getOrderById');
 };
 
-const postOrder = (req, res) => {
-  console.log('function postAllOrders');
-  res.send('function postAllOrders');
+const postOrder = (req, res, next) => {
+  res.status(201).send('function postOrders');
 };
 
-const putOrder = (req, res) => {
-  console.log('function putOrder');
-  res.send('function putOrder');
+const putOrder = (req, res, next) => {
+  res.status(200).send('function putOrder');
 };
 
-const deleteOrder = (req, res) => {
-  console.log('function deleteOrder');
-  res.send('function deleteOrder');
+const deleteOrder = (req, res, next) => {
+  res.status(200).send('function deleteOrder');
 };
 
 module.exports = {
