@@ -1,23 +1,29 @@
 /* eslint-disable no-unused-vars */
 const { Products } = require('../db/models');
 
-const getAllProducts = (req, res, next) => {
+const getAllProducts = (req, res) => {
   Products.findAll()
     .then((result) => {
       res.status(200).json(result);
     })
-    .catch(next);
+    .catch((error) => res.status(400).json({
+      code: 400,
+      error: error.message,
+    }));
 };
 
-const getProductById = (req, res, next) => {
+const getProductById = (req, res) => {
   Products.findByPk(req.params.product_id)
     .then((result) => {
       res.status(200).json(result);
     })
-    .catch(next);
+    .catch((error) => res.status(400).json({
+      code: 400,
+      error: error.message,
+    }));
 };
 
-const postProduct = (req, res, next) => {
+const postProduct = (req, res) => {
   const {
     name, flavor, complement, price, image, type, subtype,
   } = req.body;
@@ -33,10 +39,13 @@ const postProduct = (req, res, next) => {
     .then((result) => {
       res.status(201).send(result);
     })
-    .catch(next);
+    .catch((error) => res.status(400).json({
+      code: 400,
+      error: error.message,
+    }));
 };
 
-const putProduct = (req, res, next) => {
+const putProduct = (req, res) => {
   const {
     name, price, flavor, complement, image, type, subtype,
   } = req.body;
@@ -61,10 +70,13 @@ const putProduct = (req, res, next) => {
         message: 'Updated successfully!',
       });
     })
-    .catch(next);
+    .catch((error) => res.status(400).json({
+      code: 400,
+      error: error.message,
+    }));
 };
 
-const deleteProduct = (req, res, next) => {
+const deleteProduct = (req, res) => {
   Products.destroy({
     where: {
       id: req.params.product_id,
@@ -75,7 +87,10 @@ const deleteProduct = (req, res, next) => {
         message: 'Deleted successfully!',
       });
     })
-    .catch(next);
+    .catch((error) => res.status(400).json({
+      code: 400,
+      error: error.message,
+    }));
 };
 
 module.exports = {
