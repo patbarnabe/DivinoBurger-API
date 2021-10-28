@@ -64,6 +64,8 @@ que faz requisições através de uma rede (por exemplo o navegador, o cURL, etc
 ---
 
 ## :bar_chart: Estrutura do Banco de Dados
+Para este sistema foram criados três modelos básicos de usuários (Users), produtos (Products) e pedidos (Orders). No entanto, como a tabela de produtos e a tabela de pedidos têm uma relação muitos-para-muitos, foi necessária a criação de uma quarta tabela, ProductsOrders, para que possamos listar todos os produtos que foram escolhidos para um pedido.
+
 <div align="center" style="display: flex">
   <img alt="estrutura-bd" src="./images/estrutura-bd.png">
 </div>
