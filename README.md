@@ -13,8 +13,7 @@
 4. [Estrutura do Banco de Dados](#bar_chart-estrutura-do-banco-de-dados)
 5. [Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 6. [Estrutura dos Principais Arquivos](#file_folder-estrutura-dos-principais-arquivos)
-7. [Resultados](#%EF%B8%8F-resultados)
-8. [Sobre a Desenvolvedora](#woman_technologist-sobre-a-desenvolvedora)
+7. [Sobre a Desenvolvedora](#woman_technologist-sobre-a-desenvolvedora)
 
 ---
 ## :briefcase: Apresentação
@@ -89,73 +88,43 @@ que faz requisições através de uma rede (por exemplo o navegador, o cURL, etc
 ## :file_folder: Estrutura dos Principais Arquivos
 ```
 .
-├── 📁public
+├── 📁images
 |
-├── 📁src
-|   ├── 📁components
-|   |   ├── 📁All-day
-|   |   ├── 📁Breakfast
-|   |   ├── 📁ButtonDefault
-|   |   ├── 📁ButtonImg
-|   |   ├── 📁ButtonRadio
-|   |   ├── 📁ButtonSelect
-|   |   ├── 📁CarArea
-|   |   ├── 📁CartItem
-|   |   ├── 📁DateTime
-|   |   ├── 📁ErrorMessage
-|   |   ├── 📁Header
-|   |   ├── 📁Input
-|   |   ├── 📁LinkAside
-|   |   ├── 📁ListAllOrders
-|   |   ├── 📁Loader
-|   |   ├── 📁NotFound
-|   |   ├── 📁Popup
-|   |   ├── 📁PopupCancel
-|   |   └── 📁ProductArea
+├── 📁server
+|   ├── 📁controller
+|   |   ├── 📄ordersController.js
+|   |   ├── 📄productsController.js
+|   |   └── 📄usersController.js
 |   |
-|   ├── 📁img
+|   ├── 📁db
+|   |   ├── 📁config
+|   |   ├── 📁migrations
+|   |   ├── 📁models
+|   |   |   ├── 📄index.js
+|   |   |   ├── 📄orders.js
+|   |   |   ├── 📄products.js
+|   |   |   ├── 📄productsorders.js
+|   |   |   └── 📄users.js
+|   |   ├── 📁seeders
+|   |   └── 📄sequelize.js
 |   |
-|   ├── 📁pages
-|   |   ├── 📁Hall
-|   |   ├── 📁Login
-|   |   ├── 📁OrdersPanel
-|   |   └── 📁Register
-|   |
-|   ├── 📁services
-|   |   
-|   ├── 📁utils
-|   |
-|   ├── 📄global.scss
-|   ├── 📄index.js
-|   └── 📄routes.js
+|   └── 📁routes
+|       ├── 📄index.js
+|       ├── 📄ordersRouter.js
+|       ├── 📄productsRouter.js
+|       └── 📄usersRouter.js
 |   
-├── 📄README.md
-└── 📄package.json
+├── 📄.env
+├── 📄index.js   
+├── 📄Procfile  
+├── 📄package.json
+└── 📄README.md
 
 ```
-
 ---
 
-## ✔️ Resultados
-
-* #### Tablet
-<div style="display: flex" align="center">
-  <img align="center" alt="gif-cadastro" height="600" width="800" src="./src/img/gif-cadastro.gif"><br><br>
-  <img align="center" alt="gif-carrinho" height="600" width="800" src="./src/img/gif-carrinho.gif"><br><br>
-  <img align="center" alt="gif-pedidos" height="600" width="800" src="./src/img/gif-pedidos.gif"><br><br>
-  <img align="center" alt="gif-status" height="600" width="800" src="./src/img/gif-status.gif">
-</div>
-
-* #### Responsivo
-![img](./src/img/gif-responsivo.gif)
-
----
 ## :woman_technologist: Sobre a Desenvolvedora
 
-### Karen Freitas
-
-- [LinkedIn](https://www.linkedin.com/in/karen-freitas/)
-- E-mail: karenfcorrea@gmail.com
 ### Patrícia Barnabé
 
 - [LinkedIn](https://www.linkedin.com/in/patriciabarnabe)
