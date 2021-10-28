@@ -74,7 +74,9 @@ e o servidor é o programa que recebe essas requisições e as responde.
 ## :bar_chart: Estrutura do Banco de Dados
 Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
 
-![img](./images/estrutura-bd.png)
+<div align="center" style="display: flex">
+  <img alt="logo" height="200" width="200" src="./images/estrutura-bd.png">
+</div>
 
 ---
 
