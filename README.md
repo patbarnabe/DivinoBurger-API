@@ -25,7 +25,7 @@ E agora foi criado o back-end para manejar os dados. Feito através de uma _API 
 
 ---
 
-## :clipboard: Resumo do projeto
+## :clipboard: Resumo do Projeto
 
 Como back-end, nesse caso nos referimos a um _servidor web_, que é basicamente
 um programa que _ouve_ o que acontece na aplicação através de uma porta de rede,
@@ -67,7 +67,7 @@ e o servidor é o programa que recebe essas requisições e as responde.
 
 ---
 
-## :bar_chart: Estrutura dos dados
+## :bar_chart: Estrutura do Banco de Dados
 Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
 
 ![Estrutura dos dados](https://trello-attachments.s3.amazonaws.com/6058c726179e310da8b9368e/412x447/2bc4b6e9b1084e3f6134575fb6357759/ER-DIAGRAMA-DBEAVER.jpeg.jpg)
@@ -160,7 +160,7 @@ Diagrama para visualizar as tabelas com os todos endpoints, através do aplicati
 ![img](./src/img/gif-responsivo.gif)
 
 ---
-## :woman_technologist: Sobre as desenvolvedoras
+## :woman_technologist: Sobre a Desenvolvedora
 
 ### Karen Freitas
 
