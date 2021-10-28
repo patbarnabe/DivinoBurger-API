@@ -39,7 +39,7 @@ e o servidor é o programa que recebe essas requisições e as responde.
 
 ---
 
-## :gear: Endpoints da API LaBurger
+## :gear: Endpoints da API Divino Burger
 
 #### 3.1 `/users`
 
