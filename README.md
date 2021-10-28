@@ -3,17 +3,17 @@
 ## Projeto 5 - Burger Queen API desenvolvido no bootcamp de Front-End da SAP006 Laboratória :yellow_heart:
 
 ## Índice
-1. [Apresentação](#dart-apresentação)
-2. [Resumo do projeto](#pencil2-resumo-do-projeto)
-3. [Endpoints da API Divino Burger](#art-endpoints-da-API-Divino-Burger)
-4. [Estrutura doo banco de dados](#gear-estrutura-do-banco-de-dados)
+1. [Apresentação](#briefcase-apresentação)
+2. [Resumo do Projeto](#clipboard-resumo-do-projeto)
+3. [Endpoints da API Divino Burger](#gear-endpoints-da-API-Divino-Burger)
+4. [Estrutura do Banco de Dados](#bar_chart-estrutura-do-banco-de-dados)
 5. [Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 6. [Estrutura dos Principais Arquivos](#file_folder-estrutura-dos-principais-arquivos)
 7. [Resultados](#%EF%B8%8F-resultados)
-8. [Sobre a desenvolvedora](#woman_technologist-sobre-a-desenvolvedora)
+8. [Sobre a Desenvolvedora](#woman_technologist-sobre-a-desenvolvedora)
 
 ---
-## 1. Apresentação ✨
+## :briefcase: Apresentação ✨
 
 Um pequeno restaurante de hamburgueres, em crescimento, necessitava de um
 sistema para realizar pedidos usando um _tablet_, e que os enviem à
@@ -25,7 +25,7 @@ E agora foi criado o back-end para manejar os dados. Feito através de uma _API 
 
 ---
 
-## 2. Resumo do projeto 💡
+## :clipboard: Resumo do projeto 💡
 
 Como back-end, nesse caso nos referimos a um _servidor web_, que é basicamente
 um programa que _ouve_ o que acontece na aplicação através de uma porta de rede,
@@ -39,7 +39,7 @@ e o servidor é o programa que recebe essas requisições e as responde.
 
 ---
 
-## 3. Endpoints da API LaBurger 📁
+## :gear: Endpoints da API LaBurger 📁
 
 #### 3.1 `/users`
 
@@ -67,7 +67,7 @@ e o servidor é o programa que recebe essas requisições e as responde.
 
 ---
 
-## 4. Estrutura dos dados 📊
+## :bar_chart: Estrutura dos dados 📊
 Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
 
 ![Estrutura dos dados](https://trello-attachments.s3.amazonaws.com/6058c726179e310da8b9368e/412x447/2bc4b6e9b1084e3f6134575fb6357759/ER-DIAGRAMA-DBEAVER.jpeg.jpg)
