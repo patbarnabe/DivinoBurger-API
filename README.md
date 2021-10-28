@@ -19,13 +19,11 @@
 ---
 ## :briefcase: Apresentação
 
-Um pequeno restaurante de hamburgueres, em crescimento, necessitava de um
-sistema para realizar pedidos usando um _tablet_, e que os enviem à
-cozinha para que sejam preparados de forma ordenada e eficiente.
+Um pequeno restaurante de hambúrgueres, em crescimento, necessitava de um sistema para realizar pedidos usando um _tablet_, e que os enviem à cozinha para que sejam preparados de forma ordenada e eficiente.
 
-A interface front-end da aplicação LaBurger já foi criada [acesse aqui](https://sap-005-burger-queen-ale-alves.vercel.app/) para conhecer.
+A interface front-end da aplicação Divino Burger já foi criada, [acesse aqui](https://divinoburger.vercel.app/) para conhecer.
 
-E agora foi criado o back-end para manejar os dados. Feito através de uma _API rest_ que é compatível com as requisições vindas do front. [Aqui](https://laburger-api.herokuapp.com/) você consegue acessar API.
+E agora foi criado o back-end para manejar os dados dessa aplicação. Feito através de uma _API rest_ que é compatível com as requisições vindas do front. [Aqui](https://divino-burger-api-rest.herokuapp.com/) você consegue acessar API.
 
 ---
 
