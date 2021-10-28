@@ -23,7 +23,7 @@ app.use('/', routes);
 
 app.get('/', (req, res) => {
   res.send({
-    rest_api: 'Divino Burger API',
+    message: 'Essa é API do Divino Burger, seja bem vindo(a)! Para testá-la, você deve sinalizar a rota e o endpoint desejado (:',
   });
 });
 
