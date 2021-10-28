@@ -29,15 +29,10 @@ E agora foi criado o back-end para manejar os dados dessa aplicação. Feito atr
 
 ## :clipboard: Resumo do Projeto
 
-Como back-end, nesse caso nos referimos a um _servidor web_, que é basicamente
-um programa que _ouve_ o que acontece na aplicação através de uma porta de rede,
-pela qual podemos enviar _requisições_ (_requests_) e obter _respostas_ (_responses_).
-
-Um servidor web deve _manejar_ as requisições que chegam e devolver respostas a elas,
-que serão enviadas de volta ao _cliente_. Quando falamos de _aplicações de servidor_,
-isso implica uma arquitetura de _cliente/servidor_, onde o cliente é um programa
-que faz requisições através de uma rede (por exemplo o navegador, o cURL, etc)
-e o servidor é o programa que recebe essas requisições e as responde.
+Como back-end, nesse caso nos referimos a um _servidor web_, que é basicamente um programa que _ouve_ o que acontece na aplicação através de uma porta de rede,
+pela qual podemos enviar _requisições_ (_requests_) e obter _respostas_ (_responses_). Um servidor web deve _manejar_ as requisições que chegam e devolver respostas a elas,
+que serão enviadas de volta ao _cliente_. Quando falamos de _aplicações de servidor_, isso implica uma arquitetura de _cliente/servidor_, onde o cliente é um programa
+que faz requisições através de uma rede (por exemplo o navegador, o cURL, etc) e o servidor é o programa que recebe essas requisições e as responde.
 
 ---
 
@@ -70,8 +65,6 @@ e o servidor é o programa que recebe essas requisições e as responde.
 ---
 
 ## :bar_chart: Estrutura do Banco de Dados
-Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
-
 <div align="center" style="display: flex">
   <img alt="estrutura-bd" src="./images/estrutura-bd.png">
 </div>
@@ -82,23 +75,16 @@ Diagrama para visualizar as tabelas com os todos endpoints, através do aplicati
 
 | Ferramenta | Descrição |
 | --- | --- |
-| `React` | Uma biblioteca JavaScript para criar interfaces de usuário |
-| `HTML 5` | Linguagem de marcação |
-| `SCSS/SASS` | Linguagem de estilização |
-| `JavaScript` |  Linguagem de programação interpretada estruturada |
-| `Jest` | Framework de teste em JavaScript |
 | `Node.js` | Software de execução de códigos JavaScript |
+| `Express` | Framework para Node.js que fornece recursos mínimos para construção de servidores web |
+| `Sequelize` | Sequelize é um ORM(Object-Relational Mapper) para Node.js baseado em promise, utilizado para bancos de dados, como Postgres, entre outros |
+| `PostgreSQL` |  Sistema gerenciador de banco de dados objeto relacional (SGBD), desenvolvido como projeto de código aberto |
+| `Heroku` | Plataforma de serviço (PaaS) que permite a contrução, execução e operação de aplicativos inteiramente na nuvem |
+| `Dbeaver` | Aplicativo de software cliente SQL e uma ferramenta de administração de banco de dados |
+| `Postman` | API Client que facilita a criação, compartilhamento, testes e documentação de APIs |
 | `Git e GitHub` | Sistemas de controle de versões distribuídos |
-| `Figma` | Editor gráfico de vetor e prototipagem de projetos |
 
-
-* Node.js
-* Express
-* Sequelize
-* Heroku
-* PostgreSQL
-* Dbeaver 
-* Postman 
+---
 
 ## :file_folder: Estrutura dos Principais Arquivos
 ```
