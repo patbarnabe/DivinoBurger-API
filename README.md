@@ -1,5 +1,9 @@
 <h1 align="center"> Divino Burger - API com Node.js :hamburger:</h1>
 
+<div align="center" style="display: flex">
+  <img alt="logo" height="200" width="200" src="./src/images/logo.png">
+</div>
+
 ## Projeto 5 - Burger Queen API desenvolvido no bootcamp de Front-End da SAP006 Laboratória :yellow_heart:
 
 ## Índice
@@ -70,7 +74,7 @@ e o servidor é o programa que recebe essas requisições e as responde.
 ## :bar_chart: Estrutura do Banco de Dados
 Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
 
-![img](./src/img/estrutura-bd.png)
+![img](./src/images/estrutura-bd.png)
 
 ---
 
