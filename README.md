@@ -41,36 +41,36 @@ e o servidor é o programa que recebe essas requisições e as responde.
 
 ## :gear: Endpoints da API Divino Burger
 
-#### 3.1 `/users`
+#### :woman_cook: `/users`
 
 * `GET /users`
-* `GET /users/:uid`
+* `GET /users/:user_id`
 * `POST /users`
-* `PUT /users/:uid`
-* `DELETE /users/:uid`
+* `PUT /users/:user_id`
+* `DELETE /users/:user_id`
 
-#### 3.2 `/products`
+#### :fries: `/products`
 
 * `GET /products`
-* `GET /products/:productid`
+* `GET /products/:product_id`
 * `POST /products`
-* `PUT /products/:productid`
-* `DELETE /products/:productid`
+* `PUT /products/:product_id`
+* `DELETE /products/:product_id`
 
-#### 3.3 `/orders`
+#### :page_with_curl: `/orders`
 
 * `GET /orders`
-* `GET /orders/:orderId`
+* `GET /orders/:order_id`
 * `POST /orders`
-* `PUT /orders/:orderId`
-* `DELETE /orders/:orderId`
+* `PUT /orders/:order_id`
+* `DELETE /orders/:order_id`
 
 ---
 
 ## :bar_chart: Estrutura do Banco de Dados
 Diagrama para visualizar as tabelas com os todos endpoints, através do aplicativo Dbeaver.
 
-![Estrutura dos dados](https://trello-attachments.s3.amazonaws.com/6058c726179e310da8b9368e/412x447/2bc4b6e9b1084e3f6134575fb6357759/ER-DIAGRAMA-DBEAVER.jpeg.jpg)
+![img](./src/img/estrutura-bd.png)
 
 ---
 
