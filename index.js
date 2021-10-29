@@ -6,8 +6,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocs = require('./swagger.json');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('./swagger.json');
 const routes = require('./server/routes/index');
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 app.use('/', routes);
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get('/', (req, res) => {
   res.send({
