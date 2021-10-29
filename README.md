@@ -47,7 +47,7 @@ Você pode utilizar esse exemplo do login para ter acesso a um token de autentic
 
 ## :gear: Endpoints da API Divino Burger
 
-### :closed_lock_with_key: `/auth` (Hacker Edition)
+#### :closed_lock_with_key: `/auth` (Hacker Edition)
 
 * `POST /auth`
 
