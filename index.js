@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use((req, res, next) => {
-  const error = new Error('Not Found');
+  const error = new Error('Not Found.');
   error.status = 404;
   next(error);
 });
