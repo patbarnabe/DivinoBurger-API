@@ -87,7 +87,7 @@ const postOrder = async (req, res) => {
         const itemProduct = Products.findByPk(item.id);
         if (!itemProduct) {
           return res.status(400).json({
-            message: 'Produto não encontrado.',
+            message: 'Product not found.',
           });
         }
 

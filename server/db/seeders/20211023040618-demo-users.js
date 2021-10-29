@@ -3,12 +3,16 @@
 
 'use strict';
 
+require('dotenv').config();
+
+const bcrypt = require('bcrypt');
+
 module.exports = {
   up: async (queryInterface, Sequelize) => queryInterface.bulkInsert('Users', [
     {
       name: 'example-hall',
       email: 'hall@divinoburger.com',
-      password: '123456',
+      password: bcrypt.hashSync('123456', 10),
       role: 'hall',
       restaurant: 'Divino Burger',
       createdAt: new Date(),
@@ -17,7 +21,7 @@ module.exports = {
     {
       name: 'example-kitchen',
       email: 'kitchen@divinoburger.com',
-      password: '123456',
+      password: bcrypt.hashSync('123456', 10),
       role: 'kitchen',
       restaurant: 'Divino Burger',
       createdAt: new Date(),
