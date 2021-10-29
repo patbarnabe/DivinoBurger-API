@@ -1,0 +1,1179 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Divino Burger API",
+    "description": "API REST developed for internal management of Divino Burger's restaurant.",
+    "termsOfService": "https://smartbear.com/terms-of-use/",
+    "contact": {
+      "name": "Patrícia Barnabé",
+      "url": "https://github.com/patbarnabe/",
+      "email": "patbarnabe5@gmail.com"
+    },
+    "license": {
+      "name": "Copyright ©",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://divino-burger-api-rest.herokuapp.com/"
+    }
+  ],
+  "host": "https://divino-burger-api-rest.herokuapp.com/",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Access to authentication"
+    },
+    {
+      "name": "Users",
+      "description": "Operations about user"
+    },
+    {
+      "name": "Products",
+      "description": "Operations about products"
+    },
+    {
+      "name": "Orders",
+      "description": "Access to all orders"
+    }
+  ],
+  "paths": {
+    "/auth": {
+      "post": {
+        "summary": "Create a token",
+        "description": "Create a token for a registered user",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid email or password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "List all users",
+        "description": "List all users of the restaurant",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create user",
+        "description": "Create a new user",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "User data",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/components/schemas/Users"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "summary": "Find user by ID",
+        "description": "Returns a single user",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "User",
+            "description": "ID of user to return",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user",
+        "description": "Update user role or name corresponding to the given ID",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "User",
+            "required": true,
+            "description": "ID that need to be updated",
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "User",
+            "description": "User data",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "restaurant": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Missing required or new data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not authorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user",
+        "description": "Delete user corresponding to the given ID",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "User",
+            "required": true,
+            "description": "The name that needs to be deleted",
+            "type": "string",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "List all products",
+        "description": "List of all products",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Auth Token",
+            "type": "string",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create product",
+        "description": "Create a new product",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth Token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "Product",
+            "in": "body",
+            "description": "Informations about new product",
+            "type": "object",
+            "schema": {
+              "$ref": "#/components/schemas/Products"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{product_id}": {
+      "get": {
+        "summary": "Find product by ID",
+        "description": "Returns a single product",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization ",
+            "required": true,
+            "in": "header",
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "product_id ",
+            "description": "ID of product to return",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update product",
+        "description": "Update product data corresponding to the given ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth Token"
+          },
+          {
+            "name": "product_id",
+            "description": "ID that need to be updated",
+            "required": true,
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "Product",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/components/schemas/Products"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete product",
+        "description": "Delete product corresponding to the given ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth Token"
+          },
+          {
+            "name": "product_id",
+            "description": "The product that needs to be deleted",
+            "required": true,
+            "type": "string",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "summary": "List all orders",
+        "description": "List all orders of the restaurant",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth Token"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create order",
+        "description": "Create a new order",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "description": "Auth Token",
+            "type": "string",
+            "in": "header",
+            "required": true
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "description": "Information about order",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/components/schemas/Order"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Missing required data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oders/{order_id}": {
+      "get": {
+        "summary": "Find order by ID",
+        "description": "Returns a single order",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth Token"
+          },
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of user to return"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update order status",
+        "description": "Update order status corresponding to the given ID",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "Authorization ",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "order_id",
+            "description": "ID that need to be updated",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "The new order status",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "pending"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete order",
+        "description": "Delete order corresponding to the given ID",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "Authorization ",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Auth token"
+          },
+          {
+            "name": "order_id",
+            "description": "ID that need to be deleted",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "User not authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. User belongs to another restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "restaurant": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "Users": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "restaurant": {
+            "type": "string"
+          }
+        }
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "format": "float"
+          },
+          "flavor": {
+            "type": "string"
+          },
+          "complement": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "sub_type": {
+            "type": "string"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "client": {
+            "type": "string"
+          },
+          "table": {
+            "type": "number",
+            "example": 2
+          },
+          "Products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 28
+                },
+                "qtd": {
+                  "type": "number",
+                  "example": 2
+                }
+              }
+            }
+          }
+        }
+      },
+      "Orders": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "client_name": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "table": {
+            "type": "number",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string"
+          },
+          "processedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "flavor": {
+                  "type": "string"
+                },
+                "complement": {
+                  "type": "string"
+                },
+                "qtd": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
