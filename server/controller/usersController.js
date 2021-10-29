@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
+const bcrypt = require('bcrypt');
 const { Users } = require('../db/models');
 
 const getAllUsers = (req, res) => {
   Users.findAll({
     order: [['id', 'ASC']],
     attributes: {
-      exclude: 'password',
+      // exclude: 'password',
     },
   })
     .then((result) => {
@@ -39,7 +40,7 @@ const postUser = (req, res) => {
   Users.create({
     name,
     email,
-    password,
+    password: bcrypt.hashSync(password, 10),
     role,
     restaurant,
   })
