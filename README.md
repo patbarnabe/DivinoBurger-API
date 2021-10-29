@@ -22,7 +22,7 @@ Um pequeno restaurante de hambúrgueres, em crescimento, necessitava de um siste
 
 A interface front-end da aplicação Divino Burger já foi criada, [acesse aqui](https://divinoburger.vercel.app/) para conhecer.
 
-E agora foi criado o back-end para manejar os dados dessa aplicação. Feito através de uma _API rest_ que é compatível com as requisições vindas do front. [Aqui](https://divino-burger-api-rest.herokuapp.com/) você consegue acessar API.
+E agora foi criado o back-end para manejar os dados dessa aplicação. Feito através de uma _API rest_ que é compatível com as requisições vindas do front. [Aqui](https://divino-burger-api-rest.herokuapp.com/api-docs/) você consegue acessar API.
 
 ---
 
