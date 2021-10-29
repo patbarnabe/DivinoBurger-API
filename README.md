@@ -33,9 +33,23 @@ pela qual podemos enviar _requisições_ (_requests_) e obter _respostas_ (_resp
 que serão enviadas de volta ao _cliente_. Quando falamos de _aplicações de servidor_, isso implica uma arquitetura de _cliente/servidor_, onde o cliente é um programa
 que faz requisições através de uma rede (por exemplo o navegador, o cURL, etc) e o servidor é o programa que recebe essas requisições e as responde.
 
+Você pode utilizar esse exemplo do login para ter acesso a um token de autenticação:
+<div align='center'>
+ 
+| #                     	|             Login            |         
+|:-----------------------:|:----------------------------:	|
+| 🆔	                    | hall@divinoburger.com 	     | 
+| :key:                 	|            123456            	|            
+
+</div>
+
 ---
 
 ## :gear: Endpoints da API Divino Burger
+
+### :closed_lock_with_key: `/auth` (Hacker Edition)
+
+* `POST /auth`
 
 #### :woman_cook: `/users`
 
@@ -83,6 +97,7 @@ Para este sistema foram criados três modelos básicos de usuários (Users), pro
 | `Heroku` | Plataforma de serviço (PaaS) que permite a contrução, execução e operação de aplicativos inteiramente na nuvem |
 | `Dbeaver` | Aplicativo de software cliente SQL e uma ferramenta de administração de banco de dados |
 | `Postman` | API Client que facilita a criação, compartilhamento, testes e documentação de APIs |
+| `Swagger` | Linguagem de descrição de interface para descrever APIs RESTful expressas usando JSON |
 | `Git e GitHub` | Sistemas de controle de versões distribuídos |
 
 ---
@@ -94,6 +109,7 @@ Para este sistema foram criados três modelos básicos de usuários (Users), pro
 |
 ├── 📁server
 |   ├── 📁controller
+|   |   ├── 📄authController.js
 |   |   ├── 📄ordersController.js
 |   |   ├── 📄productsController.js
 |   |   └── 📄usersController.js
@@ -111,6 +127,7 @@ Para este sistema foram criados três modelos básicos de usuários (Users), pro
 |   |   └── 📄sequelize.js
 |   |
 |   └── 📁routes
+|       ├── 📄authRouter.js
 |       ├── 📄index.js
 |       ├── 📄ordersRouter.js
 |       ├── 📄productsRouter.js
